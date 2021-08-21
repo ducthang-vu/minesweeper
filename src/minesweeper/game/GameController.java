@@ -8,7 +8,7 @@ import minesweeper.field.IField;
 
 import java.util.Scanner;
 
-public class GameController implements IGameController {
+public class GameController implements Runnable {
 
     IField field;
     IInvoker invoker = new CommandInvoker();
