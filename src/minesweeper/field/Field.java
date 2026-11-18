@@ -113,7 +113,7 @@ public class Field implements IField {
         for (int i = 0; i < side; i++) {
             stringBuilder.append(i + 1).append("|");
             for (int j = 0; j < side; j++) {
-                int index = j * side + i;
+                int index = i * side + j;
                 stringBuilder.append(cells[index]);
 
             }
