@@ -44,11 +44,18 @@ public class GameController implements Runnable {
      */
     @Override
     public void run() {
-        System.out.println("How many mines do you want on the field?");
-        int numberOfMines = scanner.nextInt();
-        scanner.nextLine();
-
-        field = new Field(numberOfMines);
+        int numberOfMines;
+        while (true) {
+            System.out.println("How many mines do you want on the field?");
+            numberOfMines = scanner.nextInt();
+            scanner.nextLine();
+            try {
+                field = new Field(numberOfMines);
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
         System.out.println(field);
 
         FieldStatus gameStatus = FieldStatus.PENDING;

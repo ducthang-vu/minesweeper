@@ -46,9 +46,14 @@ public class Field implements IField {
     /**
      * Sole constructor.
      *
-     * @param   numberOfMines - number of mines for the field
+     * @param   numberOfMines - number of mines for the field, between 0 and one less than the number of cells
+     * @throws  IllegalArgumentException if numberOfMines is out of that range
      */
     public Field(int numberOfMines) {
+        // The first explored cell is always mine-free, so at most side * side - 1 mines can be placed.
+        if (numberOfMines < 0 || numberOfMines >= side * side) {
+            throw new IllegalArgumentException("Number of mines must be between 0 and " + (side * side - 1));
+        }
         this.numberOfMines = numberOfMines;
     }
 
